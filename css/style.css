@@ -20,7 +20,7 @@ header {
     nav {
         position: absolute;
         left:60%;
-        top:50%;
+        top:30%;
         ul{
             list-style: none;
             li{
@@ -29,7 +29,7 @@ header {
                 a{
                     text-decoration: none;
                     color: #d6818c;
-                    font-size: 20px;
+                    font-size: 18px;
                 }
             }
         }
@@ -37,26 +37,43 @@ header {
 }
 
 main{
+    #hero-image{
+        width: 100%;
+    }
     .principal-index{
         h1{
-            color: #5f8f93;
+            color: rgba(237,222,201,1.000);
             font-size: 50px;
-            text-align: center;
-            position: absolute;
+            text-align-last: left;
+            position:absolute;
         }
     }
-    h2 {
+    h2 {  
+        padding:30px;
         text-align: center;
         color: #5f8f93;
     }
     .div-articles{
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
+        img{
+            border-radius:10px;
+            width: 200px;
+        }
+    }
+    .best-articles{
+        a, h3{
+            text-align: center;
+            text-decoration: none;
+        }
     }
 }
 
 footer{
     background-color:#ebb06c;
+    display: block;
+
     .logo{
         width: 100px;
     }
