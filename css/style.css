@@ -2,10 +2,7 @@
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
-}
-
-body {
-    background-color: #fcf7f2;
+    box-sizing: border-box;
 }
 
 header {
@@ -41,24 +38,42 @@ main{
         width: 100%;
     }
     .principal-index{
+        padding-bottom: 50px;
+        background-image: url(../assets/img/perroinicio.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        height: 85vh;
         h1{
-            color: rgba(237,222,201,1.000);
+            z-index: 999;
+            padding: 20px;
+            color: #fcf7f2;
             font-size: 50px;
             text-align-last: left;
             position:absolute;
         }
     }
-    h2 {  
+    .testing {
+        top: 0;
+        left: 0;
+        position: absolute;
+        height: 85vh;
+        width: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
+        z-index: 99;
+    }
+    h2{ 
         padding:30px;
         text-align: center;
         color: #5f8f93;
     }
     .div-articles{
+        padding: 20px;
+        padding-bottom: 50px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         img{
-            border-radius:10px;
             width: 200px;
         }
     }
@@ -66,23 +81,145 @@ main{
         a, h3{
             text-align: center;
             text-decoration: none;
+            img{
+                width: 300px;
+            }
         }
     }
+    .brands{
+        background-color: rgba(237,222,201,1.000);
+        .image{
+            display: flex;
+            width: 60%;
+            margin: auto;
+            justify-content: space-between;
+
+            img {
+                border-radius: 100%;
+                width: 175px;
+            }
+        }   
+    }
+    .product-sub h2{
+        text-align: left;
+    }
+
 }
 
 footer{
-    background-color:#ebb06c;
-    display: block;
+    width: 100%;
+    margin: 0;
 
-    .logo{
-        width: 100px;
-    }
-    .fa-whatsapp{
-        font-size: 3rem;
-        color: rgb(75, 74, 74);
-        position:fixed;
-        bottom: 20px;
-        right: 20px;
+    background-color:#ebb06c;
+    display: flex;
+
+    .footer-general {
+        width: 95%;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+
+        .logo {
+            width: 100px;
+        }
+
+        .footer-logo-address {
+            display: flex;
+            width: 50%;
+
+            .footer-logo a {
+                display: flex;
+                width: fit-content;
+                height: fit-content;
+            }
+
+            .footer-address {
+                height: fit-content;
+                margin: auto;
+                margin-left: 1rem;
+
+                p {
+                    font-family: "Poppins", sans-serif;
+                }
+            }
+        }
+
+        .footer-social-aboutus {
+            display: flex;
+            width: 50%;
+            justify-content: space-between;
+
+            .footer-social {
+                width: 50%;
+                display: flex;
+                height: fit-content;
+                flex-direction: column;
+                margin: auto 0;
+        
+                h3 {
+                    font-size: 1.25rem;
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 400;
+                    color: #444;
+                }
+    
+                .footer-social-logos {
+                    display: flex;
+                    margin: 0;
+    
+        
+                    a {
+                        font-size: 2rem;
+                        margin: auto 0;
+                        margin-right: 10px;
+                        color: #5f8f93;
+                    }
+                }
+            }
+
+            .footer-aboutus {
+                width: 50%;
+                display: flex;
+                margin: auto 0;
+                margin-right: 5%;
+                height: fit-content;
+                padding-left: 20%;
+
+                ul {
+                    list-style: none;
+
+                    li {
+                        a {
+                            text-decoration: none;
+                            color: #444;
+                        }
+
+                        a:hover {
+                            color: #5f8f93;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
     }
     
+    .fa-whatsapp{
+        font-size: 4.5rem;
+        color: white;
+        position:fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    } 
+
+    .jorge {
+        width: 4.75rem;
+        height: 4.75rem;
+        background-color: #25D366;
+        position: fixed;
+        bottom: 1.3rem;
+        right: 1.1rem;
+        border-radius: 100%;
+        border-bottom-left-radius: 0;
+    }
 }
