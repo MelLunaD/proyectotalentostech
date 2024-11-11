@@ -3,10 +3,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
+}
+
+header.mobile {
+    display: none;
+}
+
+header.desktop {
+    display: flex;
 }
 
 header {
-    display: flex;
     background-color: rgba(237,222,201,1.000);
     position: sticky;
     top:0;
@@ -69,7 +77,7 @@ main{
             position:absolute;
         }
     }
-    .testing {
+    .image-gradient {
         top: 0;
         left: 0;
         position: absolute;
@@ -245,12 +253,16 @@ footer{
 }
 
 @media (max-width: 800px)  {
-    header {
+    header.desktop {
+        display: none;
+    }
+    header.mobile {
+        display: flex;
         .header-general {
             display: flex;
             flex-direction: column;
             width: 100%;
-            margin: 0 auto;
+            margin: auto;
         
             .logo-div {
                 width: 100%;
@@ -266,13 +278,14 @@ footer{
             .menu-nav {
                 width: 100%;
                 justify-content: center;
-                margin: auto;
                 ul {
-                    display: block;
+                    display: flex;
                     width: 100%;
                     margin: auto;
-                    flex-direction: column;
+                    flex-direction: row;
                     li:hover {
+                        border-top-left-radius: 20px;
+                        border-top-right-radius: 20px;
                         cursor: pointer;
                         background-color: #d6818c;
                         a {
@@ -280,15 +293,19 @@ footer{
                         }
                     }
                     li{
+                        padding: 5px 0 0;
                         width: 100%;
                         display: flex;
                         margin: auto;
-                        padding: 0;
+                        margin-top: 5px;
                         a {
                             padding: 0.5rem 0;
                             width: 100%;
                             text-align: center;
                             margin: auto;
+                            i {
+                                font-size: 2rem;
+                            }
                         }
                     }
                 }
