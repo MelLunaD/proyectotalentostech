@@ -6,27 +6,43 @@
 }
 
 header {
+    display: flex;
     background-color: rgba(237,222,201,1.000);
     position: sticky;
     top:0;
     z-index: 9999;
+
+    .header-general {
+        display: flex;
+        width: 70%;
+        margin: 0 auto;
     
-    .logo{
-        width: 70px;
-    }
-    nav {
-        position: absolute;
-        left:60%;
-        top:30%;
-        ul{
-            list-style: none;
-            li{
-                display:inline-block;
-                margin:15px;
-                a{
-                    text-decoration: none;
-                    color: #d6818c;
-                    font-size: 18px;
+        .logo-div {
+            width: 50%;
+            a {
+                display: flex;
+                height: fit-content;
+            }
+            .logo{
+                width: 80px;
+            }
+        }
+
+        .menu-nav {
+            display: flex;
+            width: 50%;
+            justify-content: end;
+            ul{
+                display: flex;
+                list-style: none;
+                li{
+                    display:inline-block;
+                    margin: auto 1.75rem;
+                    a{
+                        text-decoration: none;
+                        color: #d6818c;
+                        font-size: 18px;
+                    }
                 }
             }
         }
@@ -74,7 +90,9 @@ main{
         flex-direction: row;
         justify-content: space-around;
         img{
+            padding: 0.5rem;
             width: 200px;
+            border-radius: 15%;
         }
     }
     .best-articles{
@@ -83,20 +101,22 @@ main{
             text-decoration: none;
             img{
                 width: 300px;
+                border-radius: 15%;
             }
         }
     }
     .brands{
         background-color: rgba(237,222,201,1.000);
-        .image{
+        .image {
             display: flex;
-            width: 60%;
+            width: 50%;
             margin: auto;
             justify-content: space-between;
 
             img {
+                padding: 1rem;
                 border-radius: 100%;
-                width: 175px;
+                width: 25%;
             }
         }   
     }
@@ -212,7 +232,7 @@ footer{
         right: 1.5rem;
     } 
 
-    .jorge {
+    .fa-whatsapp-background {
         width: 4.75rem;
         height: 4.75rem;
         background-color: #25D366;
@@ -223,3 +243,158 @@ footer{
         border-bottom-left-radius: 0;
     }
 }
+
+@media (max-width: 800px)  {
+    header {
+        .header-general {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0 auto;
+        
+            .logo-div {
+                width: 100%;
+                display: flex;
+                a {
+                    margin: auto;
+                }
+                .logo{
+                    width: 5rem;
+                }
+            }
+
+            .menu-nav {
+                width: 100%;
+                justify-content: center;
+                margin: auto;
+                ul {
+                    display: block;
+                    width: 100%;
+                    margin: auto;
+                    flex-direction: column;
+                    li:hover {
+                        cursor: pointer;
+                        background-color: #d6818c;
+                        a {
+                            color: rgba(237,222,201,1.000);
+                        }
+                    }
+                    li{
+                        width: 100%;
+                        display: flex;
+                        margin: auto;
+                        padding: 0;
+                        a {
+                            padding: 0.5rem 0;
+                            width: 100%;
+                            text-align: center;
+                            margin: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    body {
+        main {
+            h2 {
+                padding-bottom: 0;
+            }
+
+            .product, .clients {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .div-articles{
+                width: 100%;
+                padding: 0;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                article {
+                    margin-top: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    a {
+                        margin: auto;
+
+                        h3 {
+                            font-size: 2rem;
+                        }
+                        img {
+                            width: 100%;
+                            border-radius: 2rem;
+                            padding: 0;
+                        }
+                    }
+                    img, h3 {
+                        width: 90%;
+                        border-radius: 2rem;
+                        margin: auto;
+                        text-align: center;
+                        font-size: 2rem;
+                    }
+                }
+            }
+
+            .brands {
+                padding-bottom: 20px;
+                .image {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    img {
+                        padding: 0.5rem;
+                        margin: auto;
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    footer .footer-general{
+        flex-direction: column;
+        width: 70%;
+        .footer-logo-address {
+            width: fit-content;
+            margin: auto;
+            .footer-address p {
+                font-size: 0.75rem;
+            }
+        }
+        .footer-social-aboutus {
+            flex-direction: column;
+            width: 100%;
+            .footer-social {
+                margin: 20px auto;
+                width: 100%;
+                h3 {
+                    text-align: center;
+                }
+                .footer-social-logos {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+            }
+            
+            .footer-aboutus {
+                margin: auto;
+                width: 100%;
+                padding: 0;
+                font-size: 1.25rem;
+                ul {
+                    margin: auto;
+                    li {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
