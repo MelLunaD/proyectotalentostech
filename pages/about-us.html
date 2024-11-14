@@ -7,6 +7,9 @@
         <script src="https://kit.fontawesome.com/f7f66942c2.js" crossorigin="anonymous"></script>
 
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
@@ -21,7 +24,7 @@
                     <ul>
                         <li><a href="../index.html">Inicio</a></li>
                         <li><a href="./products.html">Productos</a></li>
-                        <li><a href="./about-us.html">Nosotros</a></li>
+                        <li class="active-nav"><a href="./about-us.html">Nosotros</a></li>
                         <li><a href="./cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                     </ul>
                 </nav>
@@ -38,42 +41,41 @@
                     <ul>
                         <li><a href="../index.html"><i class="fa-solid fa-home"></i></a></li>
                         <li><a href="./products.html"><i class="fa-solid fa-store"></i></a></li>
-                        <li><a href="./about-us.html"><i class="fa-solid fa-users"></i></a></li>
+                        <li class="active-nav"><a href="./about-us.html"><i class="fa-solid fa-users"></i></a></li>
                         <li><a href="./cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                     </ul>
                 </nav>
             </div>
         </header>
-        <main>
-            <section>
+        <main id="about-us-main">
+            <section class="about-us">
                 <h1>Sobre nosotros</h1>
+                <h3>Bienvenido a Pawstales, donde cada huellita tiene una historia que contar.</h3>
                 <p>En Pawstales, creemos que cada mascota tiene una historia única, llena de momentos especiales y aventuras. Nos apasiona ofrecer productos que no solo cuiden de tu mascota, sino que también contribuyan a esos momentos inolvidables que construyen su historia.
-                    Somos una tienda creada por y para amantes de los animales, dedicada a proporcionar una amplia variedad de productos seleccionados con amor y calidad. Desde juguetes hasta alimentos y accesorios, cada artículo que ofrecemos está pensado para satisfacer las necesidades de cada mascota y hacerla sentir especial.
                     Nuestro equipo se esfuerza en elegir cuidadosamente los mejores productos para que cada visita a Paws Tales sea como descubrir un nuevo capítulo en la vida de tu peludo amigo. Sabemos que, para ti, cada mascota es parte de la familia, y queremos acompañarte en cada paso, brindándote la calidad, variedad y el cariño que ellos merecen.</p>
-                <h3>Bienvenido a Paws Tales, donde cada pata tiene una historia que contar.</h3>
-            </section>
-            <section>
+                </section>
+            <section class="contact-us">
                 <div>
                     <h2>Contáctanos</h2>
-                    <p>¿Tenés alguna duda? Comunicate con nosotros y responderemos a la brevedad.</p>
+                    <h3>¿Tenés alguna duda? Comunicate con nosotros y responderemos a la brevedad.</h3>
                 </div>
-                <form action="">
-                    <div>
-                        <label for="namecont">Nombre</label>
-                        <input type="text" placeholder="Nombre" id="namecont" name="namecont">
+                <!--Ver cómo evitar redirección de página a Formspree-->
+                <form action="https://formspree.io/f/xdkozwpd" method="POST" id="contact-form">
+                    <div class="contact-form-fields">
+                        <div class="field">
+                            <label for="name" class="label-name">Nombre:</label>
+                            <input type="name" name="name" id="name" placeholder="Ingrese su nombre">
+                        </div>
+                        <div class="field">
+                            <label for="email" class="label-email">Email:</label>
+                            <input type="email" name="email" id="email" placeholder="Ingrese su email">
+                        </div>
+                        <div class="field">
+                            <label for="message" class="label-message">Mensaje:</label>
+                            <textarea name="message" id="message" placeholder="Ingrese su mensaje"></textarea>
+                        </div>
                     </div>
-                    <div>
-                        <label for="namecont">E-mail</label>
-                        <input type="email" placeholder="E-mail" id="emailcont" name="emailcont">
-                    </div>
-                    <div>
-                        <label for="namecont">Asunto</label>
-                        <input type="text" placeholder="Asunto" id="topiccont" name="topiccont">
-                    </div>
-                    <div>
-                        <label for="namecont">Mensaje</label>
-                        <input type="text" placeholder="Mensaje" id="messagecont" name="messagecont">
-                    </div>
+                    <button type="submit">Enviar</button>
                 </form>
             </section>
         </main>
