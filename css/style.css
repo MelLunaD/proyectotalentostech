@@ -477,7 +477,7 @@ footer{
                     }
                     li{
                         padding: 5px 0 0;
-                        width: 100%;
+                        width: 25%;
                         display: flex;
                         margin: auto;
                         margin-top: 5px;
@@ -515,6 +515,18 @@ footer{
                 display: flex;
                 flex-direction: column;
             }
+            
+            .product {
+                .div-horizontal-heart {
+                    width: 90%;
+
+                    img {
+                        width: 65%;
+                        margin: auto;
+                        filter: opacity(0.5);
+                    }
+                }
+            }
 
             .div-articles{
                 width: 100%;
@@ -523,8 +535,11 @@ footer{
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
+                align-items: center;
                 article {
-                    margin-top: 20px;
+                    padding: 0;
+                    width: 100%;
+                    margin: 25px auto;
                     display: flex;
                     flex-direction: column;
                     a {
@@ -535,7 +550,7 @@ footer{
                         }
                         img {
                             width: 100%;
-                            border-radius: 2rem;
+                            border-radius: 0;
                             padding: 0;
                         }
                     }
@@ -546,6 +561,14 @@ footer{
                         text-align: center;
                         font-size: 2rem;
                     }
+
+                    p, p a {
+                        width: 90%;
+                        margin: auto;
+                        font-size: 1.75rem;
+                        text-align: left;
+                    }
+
                 }
             }
 
