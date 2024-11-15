@@ -181,11 +181,9 @@ main{
             }
         }   
     }
-
-    .product-sub h2 {
+    .product-sub h2{
         text-align: left;
     }
-
     .about-us {
         width: 50%;
         margin: auto;
