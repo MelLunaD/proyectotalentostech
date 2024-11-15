@@ -546,7 +546,7 @@ footer{
                         margin: auto;
 
                         h3 {
-                            font-size: 2rem;
+                            font-size: 1.5rem;
                         }
                         img {
                             width: 100%;
@@ -559,16 +559,35 @@ footer{
                         border-radius: 2rem;
                         margin: auto;
                         text-align: center;
-                        font-size: 2rem;
+                        font-size: 1.5rem;
                     }
 
                     p, p a {
                         width: 90%;
                         margin: auto;
-                        font-size: 1.75rem;
+                        font-size: 1.25rem;
                         text-align: left;
                     }
 
+                }
+            }
+
+            .product-articles article {
+                h3 {
+                    color: #444;
+                    font-size: 2rem;
+                    margin-top: 20px;
+                }
+                h4 {
+                    color: #444;
+                    font-size: 1.5rem;
+                    width: fit-content;
+                    margin: auto;
+                }
+                a i {
+                    color: #d6818c;
+                    margin-top: 10px;
+                    font-size: 2rem;
                 }
             }
 
