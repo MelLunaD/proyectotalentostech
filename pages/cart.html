@@ -49,36 +49,21 @@
     </header>
     <main>
         <section>
-            <h1>Mi carrito</h1>
-        </section>
-        <section>
-            <article>
-                <img src="./assets/img/producto.webp" alt="producto">
-                <h3>Producto</h3>
-                <h4>$2000.00</h4>
-                <a href="">Agregar Carrito</a>
-            </article>
-            <article>
-                <img src="./assets/img/producto.webp" alt="producto">
-                <h3>Producto</h3>
-                <h4>$2000.00</h4>
-                <a href="">Agregar Carrito</a>
-            </article>
-            <article>
-                <img src="./assets/img/producto.webp" alt="producto">
-                <h3>Producto</h3>
-                <h4>$2000.00</h4>
-                <a href="">Agregar Carrito</a>
-            </article>
-            <article>
-                <img src="./assets/img/producto.webp" alt="producto">
-                <h3>Producto</h3>
-                <h4>$2000.00</h4>
-                <a href="">Agregar Carrito</a>
-            </article>
-        </section>
-        <section>
-            <h2>Total</h2>
+            <h1>Carrito</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="cartable">
+                    <!-- Filas dinámicas -->
+                </tbody>
+            </table>
+            <div>
+                <h3>Total: $<span id="totalCart">0.00</span></h3>
+            </div>
         </section>
     </main>
     <footer>
@@ -118,5 +103,6 @@
             <a href="https://web.whatsapp.com/"target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
     </footer>
+    <script src="../js/cart.js"></script>
 </body>
 </html>
