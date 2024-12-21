@@ -59,26 +59,27 @@
                     <h2>Contáctanos</h2>
                     <h3>¿Tenés alguna duda? Comunicate con nosotros y responderemos a la brevedad.</h3>
                 </div>
-                <!--Ver cómo evitar redirección de página a Formspree-->
-                <form action="" method="" id="contact-form">
-                        <div>
-                            <label for="name" class="label-name">Nombre:</label>
-                            <input type="text" name="name" id="name" placeholder="Ingrese su nombre">
-                            <small class="text-danger d-none" id="errorName">El nombre es obligatorio</small>
-                        </div>
-                        <div>
-                            <label for="email" class="label-email">Email:</label>
-                            <input type="email" name="email" id="email" placeholder="Ej: miemail@gmail.com">
-                            <small class="text-danger d-none" id="errorEmail">Ingrese un email válido</small>
-                        </div>
-                        <div>
-                            <label for="message" class="label-message">Mensaje:</label>
-                            <textarea name="message" id="message" placeholder="Ingrese su mensaje"></textarea>
-                            <small class="text-danger d-none" id="errorMessage">El mensaje debe tener al menos 10 caracteres.</small>
-                        </div>
-                        <div>
-                            <button type="submit">Enviar</button>
-                        </div>
+                <form action="" method="" id="contact-form">       
+                    <div class="contact-form-fields">
+                            <div class="field">
+                                <label for="name" class="label-name">Nombre:</label>
+                                <input type="text" name="name" id="name" placeholder="Ingrese su nombre">
+                                <small class="text-danger d-none" id="errorName">El nombre es obligatorio</small>
+                            </div>
+                            <div class="field">
+                                <label for="email" class="label-email">Email:</label>
+                                <input type="email" name="email" id="email" placeholder="Ej: miemail@gmail.com">
+                                <small class="text-danger d-none" id="errorEmail">Ingrese un email válido</small>
+                            </div>
+                            <div class="field">
+                                <label for="message" class="label-message">Mensaje:</label>
+                                <textarea name="message" id="message" placeholder="Ingrese su mensaje"></textarea>
+                                <small class="text-danger d-none" id="errorMessage">El mensaje debe tener al menos 10 caracteres.</small>
+                            </div>
+                    </div>
+                    <div class="button-div">
+                        <button type="submit">Enviar</button>
+                    </div>
                 </form>
             </section>
         </main>

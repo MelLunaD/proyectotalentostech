@@ -1,26 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cartable = document.getElementById("cartable");
     const totalCart= document.getElementById("totalCart");
+    const totalCartDiv = document.getElementById("totalCartDiv");
+    const emptyCartSection = document.getElementById("emptyCartSection");
+    const cartMain = document.getElementById("cart-main");
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
     const cartRender = () => {
         cartable.innerHTML = "";
-
-        console.log(cart)
         
         if (cart.length === 0) {
             cartable.innerHTML = "<tr><td colspan='3'>El carrito está vacío.</td></tr>";
-            totalCart.textContent = "0.00";
+            document.querySelector("#cartable tr td").classList.add("empty-table");
+            document.getElementById("cartable-head").classList.add("d-none");
+            totalCartDiv.classList.add("d-none");
+            emptyCartSection.classList.remove("d-none");
+            emptyCartSection.style.display = "flex";
+            cartMain.classList.add("cart-main-empty");
+
             return;
         }
 
-        cart.forEach((producto, index) => {
+        cart.forEach((product, index) => {
+            emptyCartSection.style.display = "none";
             const row = document.createElement("tr");
             row.innerHTML = `
-                <td>${producto.name}</td>
-                <td>$${producto.price}</td>
+                <td>${product.name}</td>
+                <td>$${parseFloat(product.price).toFixed(2)}</td>
+                <td>${product.quantity}
+                <button class="btn btn-less btn-sm" data-index="${index}">-</button>
+                <button class="btn btn-plus btn-sm" data-index="${index}">+</button></td>
+                <td>$${( parseFloat(product.price) * parseInt(product.quantity) ).toFixed(2)}</td>
                 <td>
                     <button class="btn btn-danger btn-sm" data-index="${index}">Eliminar</button>
                 </td>
@@ -32,14 +44,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const totalResult =() => {
-        const total = cart.reduce((suma, producto) => suma + parseFloat(producto.price), 0);
-        totalCart.textContent = total.toFixed(2);
+        const total = cart.reduce((suma, product) => suma + parseFloat(product.price) * parseInt(product.quantity), 0);
+        totalCart.textContent = "$" + total.toFixed(2);
     }
 
-    cartable.addEventListener("click", (event) => { 
+    cartable.addEventListener("click", (event) => {
         if (event.target.classList.contains("btn-danger")) { 
             const index = event.target.getAttribute("data-index"); 
             cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            cartRender(); 
+        }
+        
+        if (event.target.classList.contains("btn-less")) {
+            const index = event.target.getAttribute("data-index");
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                localStorage.setItem("cart", JSON.stringify(cart));
+                cartRender();
+            } else {
+                // Si hay sólo 1 producto, se elimina del carrito.
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                cartRender();
+            }
+        }
+        
+        if (event.target.classList.contains("btn-plus")) {
+            const index = event.target.getAttribute("data-index"); 
+            cart[index].quantity++;
             localStorage.setItem("cart", JSON.stringify(cart));
             cartRender(); 
         } 
@@ -51,25 +84,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*
 <article>
-    <img src="../assets/img/huesito.jpg" alt="producto">
+    <img src="../assets/img/huesito.jpg" alt="product">
 <h3>Huesito de tela</h3>
 <h4>$2000.00</h4>
 <a href="../pages/cart.html"><i class="fa-solid fa-cart-plus"></i></a>
 </article>
 <article>
-<img src="../assets/img/pelotas.jpg" alt="producto">
+<img src="../assets/img/pelotas.jpg" alt="product">
 <h3>Pelota de lana</h3>
 <h4>$2000.00</h4>
 <a href="../pages/cart.html"><i class="fa-solid fa-cart-plus"></i></a>
 </article>
 <article>
-<img src="../assets/img/mordillocontira.jpg" alt="producto">
+<img src="../assets/img/mordillocontira.jpg" alt="product">
 <h3>Mordillo con soga</h3>
 <h4>$2000.00</h4>
 <a href="../pages/cart.html"><i class="fa-solid fa-cart-plus"></i></a>
 </article>
 <article>
-<img src="../assets/img/huesitoypelota.jpg" alt="producto">
+<img src="../assets/img/huesitoypelota.jpg" alt="product">
 <h3>Huesitos y pelota de goma</h3>
 <h4>$2000.00</h4>
 <a href="../pages/cart.html"><i class="fa-solid fa-cart-plus"></i></a>

@@ -1,16 +1,9 @@
 const formulario = document.getElementById("contact-form");
-console.log(formulario);
 
 formulario.addEventListener("submit", event =>{
-    event.preventDefault();
-
-    const name =document.getElementById("name").value.trim();
-    const email =document.getElementById("email").value.trim();
-    const message =document.getElementById("message").value.trim();
-
-    console.log(name);
-    console.log(email);
-    console.log(message);
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
     const errorName = document.getElementById("errorName");
     const errorEmail = document.getElementById("errorEmail");
