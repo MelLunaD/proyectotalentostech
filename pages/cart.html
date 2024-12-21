@@ -52,11 +52,12 @@
             <h1>Carrito</h1>
             <table class="table table-striped">
                 <thead id="cartable-head">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
+                    <tr class="table-head">
+                        <th class="prod-name">Producto</th>
+                        <th class="prod-price">Precio</th>
+                        <th class="prod-quantity">Cantidad</th>
+                        <th class="prod-subtotal">Subtotal</th>
+                        <th class="prod-remove"></th>
                     </tr>
                 </thead>
                 <tbody id="cartable">
@@ -64,6 +65,11 @@
             </table>
             <div id="totalCartDiv">
                 <h3>Total: <span id="totalCart">0.00</span></h3>
+                <div id="cartFinishDiv">
+                    <button id="cartFinish">
+                        Finalizar compra
+                    </button>
+                </div>
             </div>
         </section>
         <section id="emptyCartSection" class="d-none">

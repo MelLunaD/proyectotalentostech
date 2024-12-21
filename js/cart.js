@@ -8,47 +8,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
+    // Vuelvo a renderizar el carrito cuando lo requiero.
     const cartRender = () => {
         cartable.innerHTML = "";
         
+        // Si el carrito está vacío, muestro un mensaje y oculto el resto de la tabla.
         if (cart.length === 0) {
             cartable.innerHTML = "<tr><td colspan='3'>El carrito está vacío.</td></tr>";
             document.querySelector("#cartable tr td").classList.add("empty-table");
             document.getElementById("cartable-head").classList.add("d-none");
             totalCartDiv.classList.add("d-none");
             emptyCartSection.classList.remove("d-none");
-            emptyCartSection.style.display = "flex";
+            emptyCartSection.style.display = "flex"; // Fuerzo que el elemento se muestre ya que la clase d-none tiene menos prioridad que el CSS.
             cartMain.classList.add("cart-main-empty");
 
             return;
         }
 
+        // Si hay productos en el carrito, muestro la tabla con los datos.
         cart.forEach((product, index) => {
             emptyCartSection.style.display = "none";
             const row = document.createElement("tr");
             row.innerHTML = `
-                <td>${product.name}</td>
-                <td>$${parseFloat(product.price).toFixed(2)}</td>
-                <td>${product.quantity}
-                <button class="btn btn-less btn-sm" data-index="${index}">-</button>
-                <button class="btn btn-plus btn-sm" data-index="${index}">+</button></td>
-                <td>$${( parseFloat(product.price) * parseInt(product.quantity) ).toFixed(2)}</td>
-                <td>
+                <td class="prod-name">${product.name}</td>
+                <td class="prod-price">$${parseFloat(product.price).toFixed(2)}</td>
+                <td class="prod-quantity">
+                    ${product.quantity}
+                    <button class="btn btn-less btn-sm" data-index="${index}">-</button>
+                    <button class="btn btn-plus btn-sm" data-index="${index}">+</button>
+                </td>
+                <td class="prod-subtotal">$${( parseFloat(product.price) * parseInt(product.quantity) ).toFixed(2)}</td>
+                <td class="prod-remove">
                     <button class="btn btn-danger btn-sm" data-index="${index}">Eliminar</button>
                 </td>
             `;
             cartable.appendChild(row);
         });
 
+        // Calculo el total de la compra.
         totalResult();
     }
 
+    // Función que calcula el total de la compra.
     const totalResult =() => {
         const total = cart.reduce((suma, product) => suma + parseFloat(product.price) * parseInt(product.quantity), 0);
         totalCart.textContent = "$" + total.toFixed(2);
     }
 
+    // Agrego evento para los botones.
     cartable.addEventListener("click", (event) => {
+        // Si se clickea el botón de elminar (REMOVE), remueve el producto de el carrito.
         if (event.target.classList.contains("btn-danger")) { 
             const index = event.target.getAttribute("data-index"); 
             cart.splice(index, 1);
@@ -56,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cartRender(); 
         }
         
+        // Si se clickea el botón de menos (-), disminuye la cantidad del producto. (Si hay 1, directamente lo eliminamos).
         if (event.target.classList.contains("btn-less")) {
             const index = event.target.getAttribute("data-index");
             if (cart[index].quantity > 1) {
@@ -70,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         
+        // Si se clickea el botón de más (+), aumenta la cantidad del producto.
         if (event.target.classList.contains("btn-plus")) {
             const index = event.target.getAttribute("data-index"); 
             cart[index].quantity++;
@@ -78,82 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } 
     })
 
+    // Vuelvo a renderizar el carrito con los últimos cambios.
     cartRender();
-
 });
-
-/*
-<article>
-    <img src="../assets/img/huesito.jpg" alt="product">
-<h3>Huesito de tela</h3>
-<h4>$2000.00</h4>
-<a href="../pages/cart.html"><i class="fa-solid fa-cart-plus"></i></a>
-</article>
-<article>
-<img src="../assets/img/pelotas.jpg" alt="product">
-<h3>Pelota de lana</h3>
-<h4>$2000.00</h4>
-<a href="../pages/cart.html"><i class="fa-solid fa-cart-plus"></i></a>
-</article>
-<article>
-<img src="../assets/img/mordillocontira.jpg" alt="product">
-<h3>Mordillo con soga</h3>
-<h4>$2000.00</h4>
-<a href="../pages/cart.html"><i class="fa-solid fa-cart-plus"></i></a>
-</article>
-<article>
-<img src="../assets/img/huesitoypelota.jpg" alt="product">
-<h3>Huesitos y pelota de goma</h3>
-<h4>$2000.00</h4>
-<a href="../pages/cart.html"><i class="fa-solid fa-cart-plus"></i></a>
-</article>
-
-
-
-/*
-const HOW_I_MET = {
-    id: 4,
-    serie_name: "How I Met Your Mother",
-    seasons: [
-        {id: 1, chapters: 22},
-        {id: 2, chapters: 22},
-        {id: 3, chapters: 20},
-        {id: 4, chapters: 24},
-        {id: 5, chapters: 24},
-        {id: 6, chapters: 24},
-        {id: 7, chapters: 24},
-        {id: 8, chapters: 24},
-        {id: 9, chapters: 24}
-    ],
-    genre: "Sitcom, Comedia, Drama, Comedia Romántica",
-    cast: [
-        {name: "Josh Radnor", wiki_name: "Josh_Radnor"},
-        {name: "Jason Segel", wiki_name: "Jason_Segel"},
-        {name: "Cobie Smulders", wiki_name: "Cobie_Smulders"},
-        {name: "Neil Patrick Harris", wiki_name: "Neil_Patrick_Harris"},
-        {name: "Alyson Hannigan", wiki_name: "Alyson_Hannigan"},
-        {name: "Cristin Milioti", wiki_name: "Cristin_Milioti"}
-    ],
-    desc: 'En el año 2030, el arquitecto Ted Mosby (Josh Radnor) decide contarles a sus dos hijos la historia de cómo conoció a su madre. Por lo tanto, inicia una narración de recuerdos recopilados desde el 2005, año en el que dos de sus mejores amigos, Marshall Eriksen (Jason Segel) y Lily Aldrin (Alyson Hannigan), deciden casarse tras nueve años de noviazgo. Esa decisión hace que Ted, soltero empedernido, al igual que su otro mejor amigo Barney Stinson (Neil Patrick Harris), decida encontrar al amor de su vida desesperadamente. De una manera curiosa, aparece en ese instante la reportera canadiense Robin Scherbatsky (Cobie Smulders), que se convertirá en una nueva amiga del grupo y parte importante en la vida de Ted. A partir de este hecho, inicia la búsqueda implacable de una esposa que se convierta en madre de sus hijos.',
-    trailer_id: "BxJ9wBuQUFI?si=PhsYv_P6yy_KiiV2",
-    video_id: "Dqf1BmN4Dag",
-    similars: [0, 1, 2, 3, 4],
-    portada_id: "how-i-met-your-mother",
-    html_link:  "./details-series.html?id=",
-    img_src: "how-i-met-your-mother.png"
-}
-
-localStorage.setItem("PELICULA", JSON.stringify(HOW_I_MET));
-
-localStorage.getItem("PELICULA");
-
-localStorage.removeItem("PELICULA");
-
-const PRODUCTS = [
-    {
-        id: 1,
-        nombre: "Collar para perro",
-        precio: 5000.25
-    }
-]
-*/
